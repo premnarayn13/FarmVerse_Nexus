@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/farmverse/")
+@RequestMapping("/farmverse")
 @CrossOrigin(origins = "http://localhost:3636", allowCredentials = "true")
 
 public class LoginController {
@@ -33,15 +33,35 @@ public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @PostMapping("/login")
-    public void registerNewUser(@RequestBody FarmUser user) {
-        PasswordEncoder bCrypt=econfig.passwordEcoding();
-        String encodedPassword=bCrypt.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        service.saveUser(user);
+    @PostMapping("/register")
+    public ResponseEntity<String> registerNewUser(@RequestBody java.util.Map<String, String> request) {
+
+        try {
+
+            System.out.println("REGISTER API HIT");
+
+            FarmUser user = new FarmUser();
+
+            user.setUsername(request.get("username"));
+
+            PasswordEncoder encoder = econfig.passwordEcoding();
+            user.setPassword(encoder.encode(request.get("password")));
+
+            user.setPersonalName(request.get("personalName"));
+            user.setEmail(request.get("email"));
+            user.setRole("USER");
+
+            service.saveUser(user);
+
+            System.out.println("USER SAVED");
+
+            return ResponseEntity.ok("Registration Successful");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
-
-
     @GetMapping("/login/{userId}/{password}")
     public String validateUser(@PathVariable String userId,@PathVariable String password) {
         Boolean flag=true;

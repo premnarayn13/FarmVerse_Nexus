@@ -1,5 +1,6 @@
 package edu.infosys.FarmVerseApplication.service;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,25 +14,23 @@ public class FarmUserService implements UserDetailsService{
     @Autowired
     private FarmUserRepository repository;
 
+    @Getter
     private String role;
+    @Getter
     private FarmUser user;
+    @Getter
     private String userId;
 
-    public String getRole() {
-        return role;
-    }
-    public FarmUser getUser() {
-        return user;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
     // To save a new user in database
+// To save a new user in database
     public void saveUser(FarmUser user) {
-        repository.save(user);
-    }
 
+        System.out.println("========== Before Save ==========");
+
+        repository.save(user);
+
+        System.out.println("========== After Save ==========");
+    }
     // Validate an existing user
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
