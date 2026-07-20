@@ -33,7 +33,7 @@ public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @PostMapping("/register")
+    @PostMapping("/login")
     public ResponseEntity<String> registerNewUser(@RequestBody java.util.Map<String, String> request) {
 
         try {
