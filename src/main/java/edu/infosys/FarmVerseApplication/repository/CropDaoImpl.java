@@ -47,6 +47,11 @@ public class CropDaoImpl implements CropDao {
     }
 
 
+    @Override
+    public List<Crop> getCropsByFarmId(Long farmId) {
+        return repository.getCropsByFarmId(farmId);
+    }
+
 
 
 }
