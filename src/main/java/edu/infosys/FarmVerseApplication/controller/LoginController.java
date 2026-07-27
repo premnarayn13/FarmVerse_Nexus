@@ -83,7 +83,7 @@ public class LoginController {
 
     @GetMapping("/user")
     public String getUserId() {
-        return service.getUserId();
+        return service.getCurrentUserId();
     }
 
     @PostMapping("/logout")

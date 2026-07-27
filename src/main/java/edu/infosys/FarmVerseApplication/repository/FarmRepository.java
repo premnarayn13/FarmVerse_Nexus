@@ -15,6 +15,6 @@ public interface FarmRepository extends JpaRepository<Farm, Long> {
 
     @Query("Select max(farmId) from Farm")
     public Long getMaxFarmId();
-    @Query("Select username from Farm where username=?1")
-    public List<Farm> getFarmsByUsername(String username);
+    @Query("SELECT f FROM Farm f WHERE f.username = ?1")
+    List<Farm> getFarmsByUsername(String username);
 }

@@ -6,6 +6,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import edu.infosys.FarmVerseApplication.entity.FarmUser;
 import edu.infosys.FarmVerseApplication.repository.FarmUserRepository;
@@ -14,15 +16,6 @@ public class FarmUserService implements UserDetailsService{
     @Autowired
     private FarmUserRepository repository;
 
-    @Getter
-    private String role;
-    @Getter
-    private FarmUser user;
-    @Getter
-    private String userId;
-
-    // To save a new user in database
-// To save a new user in database
     public void saveUser(FarmUser user) {
 
         System.out.println("========== Before Save ==========");
@@ -34,10 +27,19 @@ public class FarmUserService implements UserDetailsService{
     // Validate an existing user
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        this.user=repository.findById(username).get();
-        this.userId=user.getUsername();
-        this.role=user.getRole();
-        return this.user;
+
+        FarmUser user = repository.findById(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        return user;
+    }
+
+    public String getCurrentUserId() {
+
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        return authentication.getName();
     }
 
 }

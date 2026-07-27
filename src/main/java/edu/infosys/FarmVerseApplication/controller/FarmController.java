@@ -61,7 +61,7 @@ public class FarmController {
     @GetMapping("/farm")
     public List<Farm> getFarmsByUsername() {
 
-        String username=userService.getUserId();
+        String username = userService.getCurrentUserId();
         return farmDao.getFarmsByUsername(username);
 
     }
@@ -77,7 +77,6 @@ public class FarmController {
 
         return service.generateFarmId();
     }
-
 
     @GetMapping("/farm-no")
     public List<Long> getAllFarmIdsByUsrer(){

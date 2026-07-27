@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import edu.infosys.FarmVerseApplication.entity.Farm;
 import edu.infosys.FarmVerseApplication.repository.FarmDao;
-//import edu.infosys.FarmVerseApplication.repository.FarmDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,8 @@ public class FarmService {
     @Autowired
     private FarmUserService service;
 
+
+
     public Long generateFarmId() {
         Long value=farmDao.getMaxFarmId();
         if(value==null)
@@ -30,10 +31,9 @@ public class FarmService {
         return value;
     }
 
-
     private List<Farm> getAllFarmsByUser() {
         // TODO Auto-generated method stub
-        String user = service.getUserId();
+        String user = service.getCurrentUserId();
         return farmDao.getFarmsByUsername(user);
     }
 

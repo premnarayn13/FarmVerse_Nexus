@@ -5,7 +5,6 @@ import java.util.List;
 import edu.infosys.FarmVerseApplication.entity.Crop;
 
 public interface CropDao {
-
     void addCrop(Crop crop);
 
     Crop getCropById(String id);

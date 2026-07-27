@@ -35,7 +35,7 @@ public class CropService {
     }
 
     public Crop setUsername(Crop crop) {
-        String username = service.getUserId();
+        String username = service.getCurrentUserId();
         crop.setUsername(username);
         return crop;
     }
@@ -43,7 +43,7 @@ public class CropService {
 
     public boolean validateCropArea(Crop crop) {
 
-        Farm farm = FarmDao.getFarmById(crop.getFarmId());
+        Farm farm = farmDao.getFarmById(crop.getFarmId());
 
         if (farm == null) {
             return false;
