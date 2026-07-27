@@ -17,6 +17,9 @@ public class FarmService {
     @Autowired
     private FarmDao farmDao;
 
+    @Autowired
+    private FarmUserService service;
+
     public Long generateFarmId() {
         Long value=farmDao.getMaxFarmId();
         if(value==null)
@@ -30,7 +33,7 @@ public class FarmService {
 
     private List<Farm> getAllFarmsByUser() {
         // TODO Auto-generated method stub
-        String user = Service.getUserId();
+        String user = service.getUserId();
         return farmDao.getFarmsByUsername(user);
     }
 
