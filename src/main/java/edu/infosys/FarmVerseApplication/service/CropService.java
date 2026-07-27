@@ -1,6 +1,8 @@
 package edu.infosys.FarmVerseApplication.service;
 
 
+import edu.infosys.FarmVerseApplication.entity.Farm;
+import edu.infosys.FarmVerseApplication.repository.FarmDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,24 @@ public class CropService {
         String username = service.getUserId();
         crop.setUsername(username);
         return crop;
+    }
+
+
+    public boolean validateCropArea(Crop crop) {
+
+        Farm farm = FarmDao.getFarmById(crop.getFarmId());
+
+        if (farm == null) {
+            return false;
+        }
+
+        double usedArea = 0;
+
+        for (Crop c : cropDao.getCropsByFarmId(crop.getFarmId())) {
+            usedArea += c.getCropArea();
+        }
+
+        return (usedArea + crop.getCropArea()) <= farm.getArea();
     }
 
 }
