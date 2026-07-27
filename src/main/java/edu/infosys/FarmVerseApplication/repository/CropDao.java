@@ -6,9 +6,15 @@ import edu.infosys.FarmVerseApplication.entity.Crop;
 
 public interface CropDao {
 
-    public void addCrop(Crop crop);
-    public Crop getCropById(String id);
-    public List<Crop> getCropsByUsername(String username);
-    public void deleteCropById(String id);
-    public Long getMaxCropId();
+    void addCrop(Crop crop);
+
+    Crop getCropById(String id);
+
+    List<Crop> getCropsByUsername(String username);
+
+    List<Crop> getCropsByFarmId(Long farmId);
+
+    void deleteCropById(String id);
+
+    Long getMaxCropId();
 }
