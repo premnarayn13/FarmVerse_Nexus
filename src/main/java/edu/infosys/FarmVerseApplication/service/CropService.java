@@ -18,6 +18,9 @@ public class CropService {
     @Autowired
     private FarmUserService service;
 
+    @Autowired
+    private FarmDao farmDao;
+
     public String generateCropId() {
         Long value = cropDao.getMaxCropId();
 
