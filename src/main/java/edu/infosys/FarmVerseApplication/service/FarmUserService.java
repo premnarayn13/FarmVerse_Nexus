@@ -42,4 +42,12 @@ public class FarmUserService implements UserDetailsService{
         return authentication.getName();
     }
 
+    public FarmUser getCurrentUser() {
+
+        String username = getCurrentUserId();
+
+        return repository.findById(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
 }

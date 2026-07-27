@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class YeildPredictService {
     @Value("${huggingface.api.url}")
     private String apiUrl;

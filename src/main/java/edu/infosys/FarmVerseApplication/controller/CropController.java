@@ -52,7 +52,7 @@ public class CropController {
 
     @GetMapping("/crop")
     public List<Crop> getCropsByUsername() {
-        String username=userService.getUserId();
+        String username=userService.getCurrentUserId();
         return cropDao.getCropsByUsername(username);
     }
 

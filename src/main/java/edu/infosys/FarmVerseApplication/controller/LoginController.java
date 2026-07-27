@@ -77,9 +77,8 @@ public class LoginController {
 
     @GetMapping("/login")
     public FarmUser getUserDetails() {
-        return service.getUser();
+        return service.getCurrentUser();
     }
-
 
     @GetMapping("/user")
     public String getUserId() {

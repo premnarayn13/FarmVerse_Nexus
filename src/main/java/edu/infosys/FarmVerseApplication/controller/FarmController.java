@@ -41,7 +41,7 @@ public class FarmController {
     @PostMapping("/farm")
     public void addFarm(@RequestBody Farm farm) {
         // TODO Auto-generated method stub
-        String username=userService.getUserId();
+        String username=userService.getCurrentUserId();
         farm.setUsername(username);
         farmDao.addFarm(farm);
 
