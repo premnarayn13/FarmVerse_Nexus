@@ -18,5 +18,9 @@ public interface CropRepository extends JpaRepository<Crop, String> {
     @Query("Select a from Crop a where a.username=?1")
     public List<Crop> getCropsByUsername(String username);
 
+
+    @Query("SELECT c FROM Crop c WHERE c.farmId = ?1")
+    public List<Crop> getCropsByFarmId(Long farmId);
+
 }
 
