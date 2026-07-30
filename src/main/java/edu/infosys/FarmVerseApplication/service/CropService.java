@@ -2,6 +2,7 @@ package edu.infosys.FarmVerseApplication.service;
 
 
 import edu.infosys.FarmVerseApplication.entity.Farm;
+import edu.infosys.FarmVerseApplication.entity.FarmCrop;
 import edu.infosys.FarmVerseApplication.repository.FarmDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,5 +59,26 @@ public class CropService {
         return (usedArea + crop.getCropArea()) <= farm.getArea();
     }
 
+    public FarmCrop setFarmCrop(Crop crop) {
+
+        Farm farm = farmDao.getFarmById(crop.getFarmId());
+
+        FarmCrop farmCrop = new FarmCrop();
+
+        // Farm Details
+        farmCrop.setFarmId(farm.getFarmId());
+        farmCrop.setFarmName(farm.getFarmName());
+        farmCrop.setArea(farm.getArea());
+        farmCrop.setSoil(farm.getSoil());
+
+        // Crop Details
+        farmCrop.setCropId(crop.getCropId());
+        farmCrop.setCropName(crop.getCropName());
+        farmCrop.setCropArea(crop.getCropArea());
+        farmCrop.setSownMonthYear(crop.getSownMonthYear());
+        farmCrop.setHarvestMonthYear(crop.getHarvestMonthYear());
+
+        return farmCrop;
+    }
 }
 

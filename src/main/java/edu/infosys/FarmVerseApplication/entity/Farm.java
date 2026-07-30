@@ -12,6 +12,7 @@ public class Farm {
     private String farmName;
     private Double area;
     private String username;
+    private String soil;
     public Farm() {
         super();
         // TODO Auto-generated constructor stub
@@ -46,6 +47,13 @@ public class Farm {
     }
     public void setUsername(String username) {
         this.username = username;
+    }
+    public String getSoil() {
+        return soil;
+    }
+
+    public void setSoil(String soil) {
+        this.soil = soil;
     }
 
 
