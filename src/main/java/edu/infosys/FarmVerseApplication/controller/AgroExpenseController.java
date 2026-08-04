@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import edu.infosys.FarmVerseApplication.entity.AgroExpense;
-import edu.infosys.FarmVerseApplication.entity.AgroExpenseDao;
+import edu.infosys.FarmVerseApplication.repository.AgroExpenseDao;
 import edu.infosys.FarmVerseApplication.service.AgroExpenseService;
 
 @RestController
