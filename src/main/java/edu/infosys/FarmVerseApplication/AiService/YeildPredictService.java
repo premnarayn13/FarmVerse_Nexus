@@ -17,15 +17,14 @@ import java.util.Map;
 
 @Service
 public class YeildPredictService {
-    @Value("${huggingface.api.url}")
+    @Value("${groq.api.url}")
     private String apiUrl;
 
-    @Value("${huggingface.api.key}")
+    @Value("${groq.api.key}")
     private String apiKey;
 
-    @Value("${huggingface.model.id}")
+    @Value("${groq.model.id}")
     private String modelId;
-
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
