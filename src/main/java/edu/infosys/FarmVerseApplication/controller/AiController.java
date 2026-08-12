@@ -5,6 +5,7 @@ import edu.infosys.FarmVerseApplication.AiService.YeildPredictService;
 import edu.infosys.FarmVerseApplication.entity.Crop;
 import edu.infosys.FarmVerseApplication.entity.FarmCrop;
 
+import edu.infosys.FarmVerseApplication.entity.FarmCropInputs;
 import edu.infosys.FarmVerseApplication.repository.CropDao;
 import edu.infosys.FarmVerseApplication.service.CropInputsService;
 import edu.infosys.FarmVerseApplication.service.CropService;
@@ -27,18 +28,12 @@ public class AiController {
     @Autowired
     private CropInputsService iService;
 
-
     @PostMapping("/yield/{id}")
     public FarmCrop getExpectedYield(@PathVariable String id) {
-
         Crop crop = cropDao.getCropById(id);
-
-        FarmCrop farmCrop1 = cropService.setFarmCrop(crop);
-
-        FarmCrop farmCrop2 = yeildPredictService.predictYield(farmCrop1);
-
+        FarmCrop farmCrop1 = cService.setFarmCrop(crop);
+        FarmCrop farmCrop2 = yService.predictYield(farmCrop1);
         crop.setYield(farmCrop2.getYield());
-
         cropDao.addCrop(crop);
 
         return farmCrop2;
