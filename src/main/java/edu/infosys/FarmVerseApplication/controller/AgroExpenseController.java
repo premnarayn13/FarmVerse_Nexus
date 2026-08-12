@@ -22,10 +22,17 @@ public class AgroExpenseController {
 
     @PostMapping("/agroexpense")
     public void addAgroExpense(@RequestBody AgroExpense agroExpense) {
+
+        System.out.println("Controller reached");
+
         agroExpenseDao.addAgroExpense(agroExpense);
     }
+    //@PostMapping("/agroexpense")
+    //public void addAgroExpense(@RequestBody AgroExpense agroExpense) {
+        //agroExpenseDao.addAgroExpense(agroExpense);
+    //}
 
-    @PutMapping("/agroexpense")
+    @PutMapping("/agroexpense/{id}")
     public void updateAgroExpense(@RequestBody AgroExpense agroExpense) {
         agroExpenseDao.addAgroExpense(agroExpense);
     }

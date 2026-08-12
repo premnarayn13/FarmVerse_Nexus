@@ -29,6 +29,7 @@ public class Systemconfig {
                         .requestMatchers("/farmverse/login/**").permitAll()
                         .requestMatchers("/farmverse/logout").permitAll()
                         .requestMatchers("/farmverse/**").permitAll()
+                        .requestMatchers("/farmverse/agroexpense/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .logout(logout -> logout
