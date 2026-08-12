@@ -30,6 +30,10 @@ public class ExpensePredictService {
     @Value("${groq.model.id}")
     private String modelId;
 
+    private final RestTemplate restTemplate = new RestTemplate();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+
     public FarmCropInputs predictResourceExpenses(FarmCropInputs cropInputs) {
         try {
             // Treat yield as a regular input property alongside cropId, cropName, etc.
