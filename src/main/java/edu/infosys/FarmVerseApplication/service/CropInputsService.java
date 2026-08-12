@@ -9,15 +9,15 @@ import edu.infosys.FarmVerseApplication.repository.FarmDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+//package edu.infosys.farmVerseApplication.service;
+
 @Service
 public class CropInputsService {
 
     @Autowired
     private CropDao cropDao;
-
     @Autowired
     private FarmUserService service;
-
     @Autowired
     private FarmDao farmDao;
 
@@ -28,6 +28,7 @@ public class CropInputsService {
     }
 
     public CropInputs setCropInputData(FarmCropInputs farmCropInputs) {
+
         CropInputs cropInputs = new CropInputs(farmCropInputs);
         cropInputs.setAgroTools(1.0);
         return cropInputs;
