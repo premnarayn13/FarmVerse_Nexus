@@ -53,7 +53,7 @@ public class ExpensePredictService {
                             "WATER_GALLON: [numeric value for gallons per acre]\n" +
                             "FERTILIZER_KG: [numeric value for kg per acre]\n" +
                             "PESTICIDE_KG: [numeric value for kg per acre]\n" +
-                            "TRACTOR_HOUR: [integer value for hours per acre]",
+                            "TRACTOR_HOUR: [numeric value for hours per acre]",
                     cropInputs.getCropId(),
                     cropInputs.getCropName(),
                     cropInputs.getSoil(),
@@ -115,7 +115,7 @@ public class ExpensePredictService {
                 if (!val.isEmpty()) cropInputs.setPesticides(Double.parseDouble(val));
             } else if (cleanLine.startsWith("TRACTOR_HOUR:")) {
                 String val = cleanLine.replace("TRACTOR_HOUR:", "").replaceAll("[^0-9]", "").trim();
-                if (!val.isEmpty()) cropInputs.setTractorHour(Integer.parseInt(val));
+                if (!val.isEmpty()) cropInputs.setTractorHour(Double.parseDouble(val));
             }
         }
     }
