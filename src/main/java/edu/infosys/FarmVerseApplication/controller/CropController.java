@@ -20,7 +20,7 @@ import edu.infosys.FarmVerseApplication.service.CropService;
 import edu.infosys.FarmVerseApplication.service.FarmUserService;
 
 @RestController
-@RequestMapping("/farmverse/")
+@RequestMapping("/farmverse")
 @CrossOrigin(origins = "http://localhost:3636", allowCredentials = "true")
 public class CropController {
 
