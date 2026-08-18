@@ -25,8 +25,8 @@ public class FarmDaoimpl implements FarmDao {
 
     @Override
     public Farm getFarmById(Long id) {
-        // TODO Auto-generated method stub
-        return repository.findById(id).get();
+        if (id == null) return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override

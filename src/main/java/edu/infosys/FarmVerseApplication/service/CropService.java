@@ -60,16 +60,18 @@ public class CropService {
     }
 
     public FarmCrop setFarmCrop(Crop crop) {
-
-        Farm farm = farmDao.getFarmById(crop.getFarmId());
+        if (crop == null) return new FarmCrop();
+        Farm farm = crop.getFarmId() != null ? farmDao.getFarmById(crop.getFarmId()) : null;
 
         FarmCrop farmCrop = new FarmCrop();
 
         // Farm Details
-        farmCrop.setFarmId(farm.getFarmId());
-        farmCrop.setFarmName(farm.getFarmName());
-        farmCrop.setArea(farm.getArea());
-        farmCrop.setSoil(farm.getSoil());
+        if (farm != null) {
+            farmCrop.setFarmId(farm.getFarmId());
+            farmCrop.setFarmName(farm.getFarmName());
+            farmCrop.setArea(farm.getArea());
+            farmCrop.setSoil(farm.getSoil());
+        }
 
         // Crop Details
         farmCrop.setCropId(crop.getCropId());

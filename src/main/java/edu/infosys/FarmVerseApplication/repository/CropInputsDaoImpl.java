@@ -21,7 +21,8 @@ public class CropInputsDaoImpl implements CropInputsDao {
 
     @Override
     public CropInputs getCropInputsById(String cropId) {
-        return repository.findById(cropId).get();
+        if (cropId == null) return null;
+        return repository.findById(cropId).orElse(null);
     }
 
     @Override

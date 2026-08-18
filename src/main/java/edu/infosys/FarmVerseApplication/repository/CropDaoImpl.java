@@ -24,8 +24,8 @@ public class CropDaoImpl implements CropDao {
 
     @Override
     public Crop getCropById(String id) {
-        // TODO Auto-generated method stub
-        return repository.findById(id).get();
+        if (id == null) return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
