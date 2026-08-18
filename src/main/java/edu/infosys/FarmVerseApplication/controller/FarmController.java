@@ -25,7 +25,7 @@ import edu.infosys.FarmVerseApplication.service.FarmService;
 import edu.infosys.FarmVerseApplication.service.FarmUserService;
 
 @RestController
-@RequestMapping("/farmverse/")
+@RequestMapping("/farmverse")
 @CrossOrigin(origins = "http://localhost:3636", allowCredentials = "true")
 public class FarmController {
 
