@@ -10,7 +10,7 @@ import edu.infosys.FarmVerseApplication.repository.AgroExpenseDao;
 import edu.infosys.FarmVerseApplication.service.AgroExpenseService;
 
 @RestController
-@RequestMapping("/farmverse/")
+@RequestMapping("/farmverse")
 @CrossOrigin(origins = "http://localhost:3636", allowCredentials = "true")
 public class AgroExpenseController {
 
